@@ -11,6 +11,7 @@ it:
 ```bash
 cd
 git clone https://github.com/flenniken/logrotate.git logrotate
+cd logrotate
 docker build --rm -t logrotate .
 docker run -t -i logrotate
 ```
