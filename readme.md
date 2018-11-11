@@ -16,6 +16,51 @@ docker build --rm -t logrotate .
 docker run -t -i logrotate
 ```
 
+## Sample Session
+
+Here is a sample session showing my.log rolling over.
+
+```bash
+$ docker run -t -i logrotate
+[ ok ] Starting periodic command scheduler: cron.
+steve@047236d9601b:~$ ll
+total 16
+-rw-r--r-- 1 steve steve  13 Nov  8 05:02 my.log
+-rw-r--r-- 1 steve steve 106 Nov 10 21:33 mycron
+-rw-r--r-- 1 steve steve 193 Nov 10 21:20 rotate.conf
+-rwxr-xr-x 1 steve steve 190 Nov 10 20:54 script.sh
+steve@047236d9601b:~$ f
+total 16
+-rw-r--r-- 1 steve steve 1841 Nov 11 03:45 my.log
+-rw-r--r-- 1 steve steve  106 Nov 10 21:33 mycron
+-rw-r--r-- 1 steve steve  193 Nov 10 21:20 rotate.conf
+-rwxr-xr-x 1 steve steve  190 Nov 10 20:54 script.sh
+steve@047236d9601b:~$ r
+total 20
+-rw-r--r-- 1 steve steve 1841 Nov 11 03:45 my.log
+-rw-r--r-- 1 steve steve  106 Nov 10 21:33 mycron
+-rw-r--r-- 1 steve steve  193 Nov 10 21:20 rotate.conf
+-rwxr-xr-x 1 steve steve  190 Nov 10 20:54 script.sh
+-rw-r--r-- 1 steve steve   67 Nov 11 03:45 state.txt
+steve@047236d9601b:~$ f
+total 28
+-rw-r--r-- 1 steve steve 9806 Nov 11 03:45 my.log
+-rw-r--r-- 1 steve steve  106 Nov 10 21:33 mycron
+-rw-r--r-- 1 steve steve  193 Nov 10 21:20 rotate.conf
+-rwxr-xr-x 1 steve steve  190 Nov 10 20:54 script.sh
+-rw-r--r-- 1 steve steve   67 Nov 11 03:45 state.txt
+steve@047236d9601b:~$ r
+total 20
+-rw-r--r-- 1 steve steve    0 Nov 11 03:45 my.log
+-rw-r--r-- 1 steve steve 3325 Nov 11 03:45 my.log-2018-11-11.1541907944.gz
+-rw-r--r-- 1 steve steve  106 Nov 10 21:33 mycron
+-rw-r--r-- 1 steve steve  193 Nov 10 21:20 rotate.conf
+-rwxr-xr-x 1 steve steve  190 Nov 10 20:54 script.sh
+-rw-r--r-- 1 steve steve   69 Nov 11 03:45 state.txt
+steve@047236d9601b:~$ exit
+```
+
+
 ## Explore
 
 The container has logrotate configured to rotate my.log. There are
