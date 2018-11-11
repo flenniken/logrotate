@@ -10,7 +10,7 @@ it:
 
 ```bash
 cd
-git clone https://... logrotate
+git clone https://github.com/flenniken/logrotate.git logrotate
 docker build --rm -t logrotate .
 docker run -t -i logrotate
 ```
