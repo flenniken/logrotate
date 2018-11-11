@@ -1,0 +1,5 @@
+
+# Run script.sh every minute.
+* * * * * /home/steve/script.sh >/dev/null 2>&1
+
+# required ending newline
